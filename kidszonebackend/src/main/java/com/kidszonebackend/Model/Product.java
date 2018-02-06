@@ -11,11 +11,11 @@ import org.springframework.stereotype.Component;
 public class Product {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	public int id;
-	public String pname;
-	public String brandname;
-	public Float price;
-	public int stock;
+	private int id;
+	private String pname;
+	private String brandname;
+	private Float price;
+	private int stock;
 	
 	public int getStock() {
 		return stock;

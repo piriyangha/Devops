@@ -97,24 +97,13 @@
 
 											<!--Body-->
 											<div class="modal-body mb-1">
-												<div class="md-form form-sm">
-													<i class="fa fa-envelope prefix"></i> <input type="text"
-														id="form24" class="form-control"> <label
-														for="form24">category Name</label>
-												</div>
-
-												<div class="md-form form-sm">
-													<i class="fa fa-lock prefix"></i> <input type="password"
-														id="form25" class="form-control"> <label
-														for="form25">category Id</label>
-												</div>
-
+												
+                                                 <%@include file="category.jsp" %>
 												<div class="text-center mt-2">
-													<button class="btn btn-info">
-														submit <i class="fa fa-sign-in ml-1"></i>
-													</button>
+													<button class="btn btn-info" type="submit" form="form3" value="saveproduct">Submit</button>
+												
 													<button type="button"
-														class="btn btn-outline-info waves-effect ml-auto"
+														class="btn btn-primary waves-effect ml-auto"
 														data-dismiss="modal">Close</button>
 												</div>
 											</div>
