@@ -17,12 +17,14 @@ import com.kidszonebackend.Model.Supplier;
 public class SupplierController {
 	@Autowired
 	SupplierDao supplierDao;
-	@RequestMapping(value= {"/supplier"})
+	
+	
+	/*@RequestMapping(value= {"/supplier"})
 	public String addSupplier(Model model)
 	{
 		 model.addAttribute("supp",new Supplier());
 		return "supplier";
-	}
+	}*/
 	@RequestMapping(value= {"/savesupplier"})
 	public String saveSupplierDetails(@ModelAttribute("supp") Supplier supplier) {
 		supplierDao.insertSupplier(supplier);
@@ -35,15 +37,38 @@ public class SupplierController {
 		model.addAttribute("supplier", supplier);
 		return "supplierlist";
 	}
-	/*@RequestMapping(value = "/all/deletesupplier/{sid}")
+	@RequestMapping(value = { "/all/supplier/viewSupplier/{sid}" })
+	public String viewProduct(@PathVariable int sid, Model model) {
+		Supplier supplier=supplierDao.getSupplierById(sid);
+		model.addAttribute("supp", supplier);
+		return "viewsupplier";
+	}
+
+	@RequestMapping(value = "/all/deletesupplier/{sid}")
 	public String deleteProduct(@PathVariable int sid) {
 		supplierDao.deleteSupplier(sid);
 		return "redirect:/supplierlist";
-	}*/
+	}
 	
-	/*@RequestMapping(value = "/all/supplier/editform/{sid}")
-	public String updateSupplier(@PathVariable int sid) {
-		supplierDao.deleteSupplier(sid);
-		return "redirect:/supplierlist";
+	/*@RequestMapping(value = { "/all/supplier/editform/{sid}" })
+	public String editForm(@PathVariable int pid, Model model) {
+		Supplier supplier=supplierDao.getSupplierById(sid);
+		
+		model.addAttribute("supp",supplier);
+		return "updatesupplier";
+	}
+
+	@RequestMapping(value = { "/all/product/updateproduct" })
+	public String updateProduct(@ModelAttribute(name = "products") Product productBean, Model model) {
+
+		model.addAttribute("product", productBean);
+		productdao.updateProduct(productBean);
+		
+		
+		
+		System.out.println("product is updated++");
+		
+		
+		return "ImageUpload";
 	}*/
 }

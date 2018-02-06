@@ -1,4 +1,4 @@
-package com.kidszonebackend.TestCase;
+/*package com.kidszonebackend.TestCase;
 
 import static org.junit.Assert.assertEquals;
 
@@ -26,20 +26,19 @@ public class UserTest {
 	@Test
 	public void testInserMethod() {
 		System.out.println((User)context.getBean("user"));
-	UserDao	userdao=(UserDao)context.getBean("userDao");
-	User user=(User)context.getBean("user");
+	    UserDao	userdao=(UserDao)context.getBean("userDao");
+	    User user=(User)context.getBean("user");
 		user.setName("priya");
 		user.setPassword("ishaan");
 		user.setDob("17.07.1991");
 		user.setAddress("mamamadurai");
 		user.setEmail("t.piriyangha@gmail.com");
 		user.setPhone("12345678");
-		
 		assertEquals("insert Successfully",true,userdao.insertValues(user));
-		
-	}
-	/*@AfterClass
+		}
+	@AfterClass
 	public static void tearDrop() {
 		context.close();
-	}*/
+	}
 }
+*/
