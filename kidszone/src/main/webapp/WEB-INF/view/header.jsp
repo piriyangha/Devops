@@ -135,9 +135,8 @@
 							<!--/.Content-->
 						</div>
 					</div>
-				<li><a href="supplier"><span
-						class="glyphicon glyphicon-home aria-hidden=true"></span>Add
-						Supplier</a></li>
+				<li>
+					
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">category <span class="caret"></span></a>
 					<ul class="dropdown-menu">

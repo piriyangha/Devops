@@ -19,7 +19,6 @@ public class HomeController {
 		map.addAttribute("supp", new Supplier());
 		map.addAttribute("pro",new Product());
 		map.addAttribute("cat",new Category());
-		
 		return "home";
 	}
 	

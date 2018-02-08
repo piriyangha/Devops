@@ -16,7 +16,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 </head>
 <body>
-<h1> you added supplier successfully</h1>
+<h1 style="text-align:center"> Supplier List</h1>
 <table  class="table table-responsive">
 		<tr>
 			
@@ -28,7 +28,7 @@
 		<c:forEach items="${supplier}" var="sup">
 			<tr>
 				
-				<td><c:out value="${sup.sname}" /></td>
+				<td><c:out value="${sup.sname}"/></td>
 				
 
 				<td align="center">

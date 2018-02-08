@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.kidszonebackend.Dao.CategoryDao;
 import com.kidszonebackend.Model.Category;
+import com.kidszonebackend.Model.Supplier;
 @Repository("categoryDao")
 @Transactional
 public class CategoryDaoImpl implements CategoryDao{
@@ -23,25 +24,31 @@ SessionFactory sessionFactory;
 
 	@Override
 	public List<Category> getAllCategories() {
-		// TODO Auto-generated method stub
-		return null;
+		return sessionFactory.getCurrentSession().createQuery("from Category", Category.class).list();
+		
 	}
 
 	@Override
 	public void deleteCategory(int cid) {
-		// TODO Auto-generated method stub
+		sessionFactory.getCurrentSession().delete(getCategoryById(cid));
 		
 	}
 
 	@Override
 	public Category getCategoryById(int cid) {
-		// TODO Auto-generated method stub
-		return null;
+		return (Category) sessionFactory.getCurrentSession().get(Category.class, cid);
+		
 	}
 
 	@Override
 	public void updateCategory(Category category) {
-		// TODO Auto-generated method stub
+		try {
+		sessionFactory.getCurrentSession().update(category);
+		}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
 		
 	}
 
