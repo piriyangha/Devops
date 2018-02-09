@@ -47,6 +47,7 @@
                     </div>
                 </div>
             </div>
+             <springForm:input type="hidden"  path="cid" class="form-control"/>
             <br>
             <div class="form-group">
 			<div class="col-sm-12">

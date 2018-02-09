@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Entity
 public class Category {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int cid;
 	private String cname;
 	public int getCid() {

@@ -135,15 +135,16 @@
 							<!--/.Content-->
 						</div>
 					</div>
-				<li>
+				
 					
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#">category <span class="caret"></span></a>
+				<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">category <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="#">Boys</a></li>
 						<li><a href="#">Girls</a></li>
 						<li><a href="#">Toys</a></li>
-					</ul></li>
+					</ul>
+					</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#"><span class="glyphicon glyphicon-user"></span>

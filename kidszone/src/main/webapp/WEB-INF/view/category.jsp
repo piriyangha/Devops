@@ -35,7 +35,7 @@
                 </div>
             </div>
      
-          
+            <springForm:input type="hidden"  path="cid" class="form-control"/>
            
         </springForm:form>
 

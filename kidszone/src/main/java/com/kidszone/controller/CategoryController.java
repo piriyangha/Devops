@@ -42,8 +42,8 @@ public class CategoryController {
 		return "updatecategory";
 	}
 	@RequestMapping(value = { "/all/category/updatecategory" })
-	public String updateSupplier(@ModelAttribute(name = "category") Category category, Model model) {
-        model.addAttribute("cat",category);
+	public String updateSupplier(@ModelAttribute(name = "category") Category category) {
+        //model.addAttribute("cat",category);
         categoryDao.updateCategory(category);
 		return "redirect:/categorylist";
 	}
