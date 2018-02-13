@@ -19,6 +19,8 @@ private String email;
 private String dob;
 private String address;
 private String phone;
+
+
 public String getPassword() {
 	return password;
 }

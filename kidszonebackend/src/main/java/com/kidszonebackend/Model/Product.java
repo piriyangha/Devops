@@ -1,33 +1,65 @@
 package com.kidszonebackend.Model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 @Component
 @Entity
 public class Product {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private int pid;
 	private String pname;
 	private String brandname;
 	private Float price;
 	private int stock;
+	@ManyToOne(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
+	private Category category;
+	@ManyToOne(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
+	private Supplier supplier;
+	@Transient
+	private MultipartFile image;
 	
+	
+	public Supplier getSupplier() {
+		return supplier;
+	}
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
+	}
+	public MultipartFile getImage() {
+		return image;
+	}
+	public void setImage(MultipartFile image) {
+		this.image = image;
+	}
+	
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
 	public int getStock() {
 		return stock;
 	}
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
-	public int getId() {
-		return id;
+	
+	public int getPid() {
+		return pid;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setPid(int pid) {
+		this.pid = pid;
 	}
 	public String getPname() {
 		return pname;

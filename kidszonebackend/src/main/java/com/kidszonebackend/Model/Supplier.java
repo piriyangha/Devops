@@ -1,9 +1,13 @@
 package com.kidszonebackend.Model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.springframework.stereotype.Component;
 
@@ -14,6 +18,9 @@ public class Supplier {
 @GeneratedValue(strategy=GenerationType.AUTO)
 private int sid;
 private String sname;
+@OneToMany(cascade = CascadeType.ALL, mappedBy="supplier",targetEntity = Product.class)
+private List<Product> product;
+
 public int getSid() {
 	return sid;
 }

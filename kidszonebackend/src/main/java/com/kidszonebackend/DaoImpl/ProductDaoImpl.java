@@ -17,9 +17,10 @@ public class ProductDaoImpl implements ProductDao {
 	@Autowired
 	SessionFactory sessionFactory;
 	@Override
-	public void insertProduct(Product product) {
+	public Boolean insertProduct(Product product) {
 		
 		sessionFactory.getCurrentSession().saveOrUpdate(product);
+		return true;
 	}
 	@Override
 	public List<Product> getAllProducts() {
@@ -27,8 +28,8 @@ public class ProductDaoImpl implements ProductDao {
 		return null;
 	}
 	@Override
-	public void deleteProduct(int pid) {
-		
+	public Boolean deleteProduct(int pid) {
+		return true;
 		
 	}
 	@Override
@@ -37,8 +38,8 @@ public class ProductDaoImpl implements ProductDao {
 		return null;
 	}
 	@Override
-	public void updateProduct(Product product) {
-		
+	public Boolean updateProduct(Product product) {
+		return true;
 		
 	}
 

@@ -22,6 +22,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.4/css/mdb.min.css">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.4/js/mdb.min.js"></script>
+	<c:set var="contextRoot" value="${pageContext.request.contextPath }"></c:set>
 </head>
 <body>
 	<nav class="navbar navbar info-color-dark">
@@ -37,26 +38,27 @@
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="#"><span
 						class="glyphicon glyphicon-home aria-hidden=true"></span> Home</a></li>
-				<li><a href="#add"><span
+				<li><a href="#"><span
 						class="glyphicon glyphicon-home aria-hidden=true"></span> Admin</a></li>
-
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#">category <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<c:forEach items="${category}" var="cat">
+							<li><a href="#">${cat.cname}</a></li>
+						</c:forEach>
+					</ul></li>
 				<li>
 					<button type="button" class="btn btn-info btn-lg"
 						data-toggle="modal" data-target="#regis">
 						<span class="glyphicon glyphicon-user"></span> Add
 					</button>
-
-
-
 					<div class="modal fade" id="regis" tabindex="-1" role="dialog"
 						aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-dialog cascading-modal" role="document">
 							<!--Content-->
 							<div class="modal-content">
-
 								<!--Modal cascading tabs-->
 								<div class="modal-c-tabs">
-
 									<!-- Nav tabs -->
 									<ul class="nav nav-tabs tabs-3 light-blue darken-3"
 										role="tablist">
@@ -70,86 +72,65 @@
 											data-toggle="tab" href="#panel9" role="tab"><i
 												class="fa fa-user-plus mr-1"></i> product</a></li>
 									</ul>
-
 									<!-- Tab panels -->
 									<div class="tab-content">
 										<!--Panel 7-->
 										<div class="tab-pane fade in show active" id="panel7"
 											role="tabpanel">
-
 											<!--   Body -->
 											<div class="modal-body mb-1">
-
 												<%@ include file="supplier.jsp"%>
 												<div class="text-center mt-2">
-													<button class="btn btn-info" type="submit" form="form2" value="saveproduct">Submit</button>
+													<button class="btn btn-info" type="submit" form="form2"
+														value="saveproduct">Submit</button>
 													<button type="button"
 														class="btn btn-primary waves-effect ml-auto"
 														data-dismiss="modal">Close</button>
 												</div>
 											</div>
-
-
 										</div>
 										<!--/.Panel 7-->
 										<!--Panel 8-->
 										<div class="tab-pane fade" id="panel8" role="tabpanel">
-
 											<!--Body-->
 											<div class="modal-body mb-1">
-												
-                                                 <%@include file="category.jsp" %>
+												<%@include file="category.jsp"%>
 												<div class="text-center mt-2">
-													<button class="btn btn-info" type="submit" form="form3" value="saveproduct">Submit</button>
-												
+													<button class="btn btn-info" type="submit" form="form3"
+														value="saveproduct">Submit</button>
 													<button type="button"
 														class="btn btn-primary waves-effect ml-auto"
 														data-dismiss="modal">Close</button>
 												</div>
 											</div>
-
 										</div>
 										<!--/.Panel 8-->
 										<!--Panel 9-->
 										<div class="tab-pane fade" id="panel9" role="tabpanel">
-
 											<!--Body-->
 											<div class="modal-body mb-1">
-												
-                                                <%@include file="product.jsp" %>
-												
-													<div class="text-center mt-2">
-													<button class="btn btn-info" type="submit" form="form1" value="saveproduct">Submit</button>
+												<%@include file="product.jsp"%>
+												<div class="text-center mt-2">
+													<button class="btn btn-info" type="submit" form="form1"
+														value="saveproduct">Submit</button>
 													<button type="button"
 														class="btn btn-primary waves-effect ml-auto"
 														data-dismiss="modal">Close</button>
 												</div>
-											
 											</div>
-
 										</div>
 									</div>
-
 								</div>
 							</div>
 							<!--/.Content-->
 						</div>
 					</div>
-				
-					
-				<li class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#">category <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">Boys</a></li>
-						<li><a href="#">Girls</a></li>
-						<li><a href="#">Toys</a></li>
-					</ul>
-					</li>
+				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#"><span class="glyphicon glyphicon-user"></span>
+				<li><a href="${contextRoot}/register"><span class="glyphicon glyphicon-user"></span>
 						Sign Up</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
+				<li><a href="${contextRoot}/login"><span class="glyphicon glyphicon-log-in"></span>
 						Login</a></li>
 			</ul>
 		</div>
