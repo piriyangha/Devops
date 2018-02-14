@@ -21,6 +21,12 @@ private String sname;
 @OneToMany(cascade = CascadeType.ALL, mappedBy="supplier",targetEntity = Product.class)
 private List<Product> product;
 
+public List<Product> getProduct() {
+	return product;
+}
+public void setProduct(List<Product> product) {
+	this.product = product;
+}
 public int getSid() {
 	return sid;
 }

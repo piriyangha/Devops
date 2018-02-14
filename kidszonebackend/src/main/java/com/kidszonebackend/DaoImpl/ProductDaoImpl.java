@@ -25,22 +25,33 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public List<Product> getAllProducts() {
 		
-		return null;
+		return sessionFactory.getCurrentSession().createQuery("from Product", Product.class).list();
 	}
 	@Override
 	public Boolean deleteProduct(int pid) {
+		sessionFactory.getCurrentSession().delete(getProductById(pid));
 		return true;
 		
 	}
 	@Override
-	public Supplier getProductById(int pid) {
-		
-		return null;
+	public Product getProductById(int pid) {
+		return (Product)sessionFactory.getCurrentSession().get(Product.class, pid);
+	}
+	@Override
+	public Product getProductByCatId(int cid) {
+			return (Product)sessionFactory.getCurrentSession().get(Product.class, cid);
 	}
 	@Override
 	public Boolean updateProduct(Product product) {
+		try {
+			sessionFactory.getCurrentSession().update(product);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		return true;
 		
 	}
+	
 
 }

@@ -10,7 +10,8 @@ public interface ProductDao {
 	 public Boolean insertProduct(Product product);
 	 public List<Product> getAllProducts();
 	 public Boolean deleteProduct(int pid);//for project
-	 public Supplier getProductById(int pid);
+	 public Product getProductById(int pid);
+	 public Product getProductByCatId(int cid);
 	 public Boolean updateProduct(Product product);
 
 }

@@ -9,6 +9,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kidszonebackend.Dao.CategoryDao;
+import com.kidszonebackend.Dao.SupplierDao;
 import com.kidszonebackend.Model.Category;
 import com.kidszonebackend.Model.Product;
 import com.kidszonebackend.Model.Supplier;
@@ -17,11 +18,13 @@ import com.kidszonebackend.Model.Supplier;
 public class HomeController {
 @Autowired
 	CategoryDao categoryDao;
-
+@Autowired
+SupplierDao supplierDao;
 	@RequestMapping(value = { "/","/home" })
 	public String homePage(ModelMap map) {
 		try {
 		map.addAttribute("category", categoryDao.getAllCategories());
+		map.addAttribute("supplier", supplierDao.getAllSuppliers());
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

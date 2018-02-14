@@ -36,7 +36,7 @@
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#"><span
+				<li class="active"><a href="/home"><span
 						class="glyphicon glyphicon-home aria-hidden=true"></span> Home</a></li>
 				<li><a href="#"><span
 						class="glyphicon glyphicon-home aria-hidden=true"></span> Admin</a></li>

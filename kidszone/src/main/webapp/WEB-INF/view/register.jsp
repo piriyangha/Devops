@@ -25,7 +25,7 @@ body{
    </style>
 </head>
 <body>
-	<%-- <%@ include file="header.jsp"%> --%>
+	<%@ include file="header.jsp" %>
 	<div class="container">
 		<h1 style="text-align: center">Welcome to Registration Page</h1>
 		<br>

@@ -28,7 +28,7 @@
 </head>
 <body>
 	<springForm:form action="${contextRoot}/saveproduct" method="POST"
-		modelAttribute="pro" enctype="multipart/form-data"  class="form-horizontal" id="form1">    <!--  enctype="multipart/form-data" -->
+		modelAttribute="pro" class="form-horizontal" id="form1">    <!--  enctype="multipart/form-data" -->
 
 
 		<div class="row">
@@ -80,7 +80,7 @@
 		<div class="row">
 		<div class="form-group">
 				<springForm:label class="control-label col-sm-4"
-					style="text-align:right; color:maroon;" path="">Select category:</springForm:label>
+					style="text-align:right; color:maroon;" path="category.cid">Select category:</springForm:label>
 				<div class="control-label col-sm-4 col-sm-4">
 					<springForm:select class="form-control" path="category.cid">
 						<springForm:option value="0" label="----select category----" />
@@ -91,15 +91,29 @@
               </div>
 				</div>
 			</div>
+			<div class="row">
+		<div class="form-group">
+				<springForm:label class="control-label col-sm-4"
+					style="text-align:right; color:maroon;" path="supplier.sid">Select supplier:</springForm:label>
+				<div class="control-label col-sm-4 col-sm-4">
+					<springForm:select class="form-control" path="supplier.sid">
+						<springForm:option value="0" label="----select supplier----" />
+						<c:forEach var="s" items="${supplier}">
+							<springForm:option value="${s.sid}" label="${s.sname}" />
+						</c:forEach>
+					</springForm:select>
+              </div>
+				</div>
+			</div>
 	  
-			<div class="form-group">
+			<%-- <div class="form-group">
 				<springForm:label class="control-label col-sm-4"
 					style="text-align:right; color:maroon;" path="image"> Upload Image:</springForm:label>
 				<div class="control-label col-sm-4 col-sm-4">
 					<springForm:input type="file" path="image" class="form-control"
 						placeholder="upload image" />
 				</div>
-			</div>
+			</div> --%>
 		 
 	</springForm:form>
 </body>

@@ -21,13 +21,13 @@ public class Product {
 	private String brandname;
 	private Float price;
 	private int stock;
-	@ManyToOne(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Category category;
-	@ManyToOne(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Supplier supplier;
-	@Transient
+	/*@Transient
 	private MultipartFile image;
-	
+	*/
 	
 	public Supplier getSupplier() {
 		return supplier;
@@ -35,12 +35,12 @@ public class Product {
 	public void setSupplier(Supplier supplier) {
 		this.supplier = supplier;
 	}
-	public MultipartFile getImage() {
+	/*public MultipartFile getImage() {
 		return image;
 	}
 	public void setImage(MultipartFile image) {
 		this.image = image;
-	}
+	}*/
 	
 	public Category getCategory() {
 		return category;
