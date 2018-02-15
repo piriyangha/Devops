@@ -35,22 +35,22 @@ public class ProductController {
 	
 	@RequestMapping(value= {"/saveproduct"})
 	public String saveProduct(@ModelAttribute("pro") Product product) {
-		
-		/*MultipartFile image=product.getImage();
+		productDao.insertProduct(product);
+		MultipartFile image=product.getImage();
 		String imagepath=request.getServletContext().getRealPath("/resource/images");
 		System.out.println("---------Directory:-------"+imagepath);
 		Path path=Paths.get(imagepath + File.separator + product.getPid()+".jpg");
-		System.out.println("-------Path:-----"+path.toString());*/
-		productDao.insertProduct(product);
-		/*try {
+		System.out.println("-------Path:-----"+path.toString());
+		
+		try {
 			image.transferTo(new File(path.toString()));
-		} catch (IllegalStateException e) {
+		}   catch (IllegalStateException e) {
 			
 			e.printStackTrace();
 		} catch (IOException e) {
 			
 			e.printStackTrace();
-		}*/
+		}
 		return "redirect:/productlist";
 		}
 	@RequestMapping(value= {"/productlist"})
@@ -59,26 +59,30 @@ public class ProductController {
 		model.addAttribute("product", product);
 		return "productlist";
 	}
-	@RequestMapping(value = "/all/deleteProduct/{pid}")
+	@RequestMapping(value = "/admin/deleteProduct/{pid}")
 	public String deleteProduct(@PathVariable int pid) {
 		productDao.deleteProduct(pid);
-		return "redirect:/ProductList";
+		return "redirect:/productlist";
 	}
 
 	@RequestMapping(value = { "/all/product/viewProduct/{pid}" })
 	public String viewProduct(@PathVariable int pid, Model model) {
 		Product product = productDao.getProductById(pid);
 		model.addAttribute("product", product);
-		return "viewProduct";
+		return "viewproduct";
 	}
 
-	@RequestMapping(value = { "/all/product/editform/{pid}" })
+	@RequestMapping(value = { "/admin/product/editform/{pid}" })
 	public String editForm(@PathVariable int pid, Model model) {
-		model.addAttribute("cat", categoryDao.getAllCategories());
-		model.addAttribute("supp", supplierDao.getAllSuppliers());
+		model.addAttribute("category", categoryDao.getAllCategories());
+		model.addAttribute("supplier", supplierDao.getAllSuppliers());
 		Product product = productDao.getProductById(pid);
 		model.addAttribute("products", product);
-		return "updateProduct";
+		return "updateproduct";
 	}
-
+	@RequestMapping(value = { "/all/product/updateproduct" })
+	public String updateSupplier(@ModelAttribute("product") Product product) {
+     	productDao.updateProduct(product);
+		return "redirect:/productlist";
+	}
 }

@@ -20,7 +20,7 @@ public class HomeController {
 	CategoryDao categoryDao;
 @Autowired
 SupplierDao supplierDao;
-	@RequestMapping(value = { "/","/home" })
+	@RequestMapping(value = { "/","/admin/home" })
 	public String homePage(ModelMap map) {
 		try {
 		map.addAttribute("category", categoryDao.getAllCategories());
@@ -28,15 +28,15 @@ SupplierDao supplierDao;
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		map.addAttribute("supp", new Supplier());
+		map.addAttribute("supp",new Supplier());
 		map.addAttribute("pro",new Product());
 		map.addAttribute("cat",new Category());
 		return "home";
 	}
 	
-	@RequestMapping(value= {"/login"})
+	/*@RequestMapping(value= {"/login"})
 	public String loginPage()
 	{
 		return "Login";
-	}
+	}*/
 }

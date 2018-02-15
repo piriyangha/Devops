@@ -7,6 +7,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Header page</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,6 +24,19 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.4/js/mdb.min.js"></script>
 	<c:set var="contextRoot" value="${pageContext.request.contextPath }"></c:set>
+	
+<style type="text/css">
+.navbar li a {
+	color: white;
+}
+.navbar li a hover {
+	color: red;
+}
+body {
+	background-color: background-color: #e38dd6;
+	background-image:url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+}
+</style>
 </head>
 <body>
 	<nav class="navbar navbar info-color-dark">
@@ -47,11 +61,12 @@
 							<li><a href="#">${cat.cname}</a></li>
 						</c:forEach>
 					</ul></li>
-				<li>
-					<button type="button" class="btn btn-info btn-lg"
-						data-toggle="modal" data-target="#regis">
-						<span class="glyphicon glyphicon-user"></span> Add
-					</button>
+				<li><a href="productlist"> ProductList <span class="glyphicon glyphicon-menu-hamburger"></span></a></li>
+					
+					
+				<%--  <c:if test="${pageContext.request.userPrincipal.name == 'priya' }"> --%>
+				 <li><a href="#" data-toggle="modal" data-target="#regis"><span class="caret"></span> Add</a></li>
+				<%--  </c:if> --%>
 					<div class="modal fade" id="regis" tabindex="-1" role="dialog"
 						aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-dialog cascading-modal" role="document">
@@ -127,12 +142,19 @@
 					</div>
 				</li>
 			</ul>
+			<c:if test="${pageContext.request.userPrincipal.name==null }">
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="register"><span class="glyphicon glyphicon-user"></span>
+					Register</a></li>
+			<li><a href="login?Login=true"><span class="glyphicon glyphicon-log-in"></span>
+					Login</a></li></ul></c:if>
+					
+			<c:url value="/j_spring_security_logout" var="logout"/>		
+			<c:if test="${pageContext.request.userPrincipal.name !=null }">	
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="${contextRoot}/register"><span class="glyphicon glyphicon-user"></span>
-						Sign Up</a></li>
-				<li><a href="${contextRoot}/login"><span class="glyphicon glyphicon-log-in"></span>
-						Login</a></li>
-			</ul>
+				<li><a href="${logout}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>	</ul>						
+	        </c:if>
+	       
 		</div>
 	</div>
 	</nav>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%-- <%@taglib uri="http://www.springframework.org/security/tags" prefix="security" %> --%>
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="security" %> 
 <%@page isELIgnored="false"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -13,7 +13,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link href="<c:url value="/resource/css/datatable.min.css" />"
+<link href="<c:url value="/resource/css/datatable.min.css"/>"
 	rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 <script type="text/javascript" ></script>
@@ -26,19 +26,21 @@ h2{
     color:orange;
 }
 th{
-   text-align:center; 
+    text-align:center;  
    color:maroon;
    font-size:125%;
+}
+td{
+  text-align:center;
 }
 </style>
 
 </head>
 <body>
-<%-- <%@include file="header.jsp"%>   --%>
+ <%-- <%@ include file="header.jsp" %> --%>
 	<h2> Product List</h2>
 	<table  class="table table-responsive">
 		<tr>
-			<th>Product Id</th>
 			<th>Product Name</th>
 			<th>Category</th>
 			<th>Brand name</th>
@@ -50,24 +52,24 @@ th{
 
 		<c:forEach items="${product}" var="pro">
 			<tr>
-				<td><c:out value="${pro.pid}" /></td>
 				<td><c:out value="${pro.pname}" /></td>
 				<td><c:out value="${pro.category.cname}" /></td>
 				<td><c:out value="${pro.brandname}" /></td>
-				<c:url value="/resource/images/${pro.pname}.jpg" var="imageUrl"></c:url>
+				<c:url value="/resource/images/${pro.pid}.jpg" var="imageUrl"></c:url>
 				<td><img src="${imageUrl}" height="50" width="100"></td>
 				<td><c:out value="${pro.price}" /></td>
 				<td><c:out value="${pro.stock}" /></td>
 
 				<td align="center">
 				<a href=<c:url value="/all/product/viewProduct/${pro.pid}"/>><span class="glyphicon glyphicon-info-sign">| |</span></a>
-				<a	href=<c:url value="/all/product/editform/${pro.pid}"/>><span class="glyphicon glyphicon-pencil">| |</span></a> 
-				<a  href=<c:url value="/all/deleteProduct/${pro.pid}"/>class="btn btn-danger" ><span class="glyphicon glyphicon-trash"></span></a>
-				</td>
+				<security:authorize access="hasRole('ROLE_ADMIN')">
+				<a	href=<c:url value="/admin/product/editform/${pro.pid}"/>><span class="glyphicon glyphicon-pencil">| |</span></a> 
+				<a  href=<c:url value="/admin/deleteProduct/${pro.pid}"/>><span class="glyphicon glyphicon-trash"></span></a>
+				</security:authorize></td>
 			</tr>
 		</c:forEach>
 	</table>
 	
-	
+	<%@ include file="footer.jsp" %>
 </body>
 </html>

@@ -27,8 +27,9 @@ background-image:url("https://i.pinimg.com/originals/96/95/0a/96950a894a19d012e2
 
 </head>
 <body>
-
-	<form action="${contextRoot}/home" method="post">
+ <%-- <%@ include file="header.jsp" %>  --%>
+  <c:url value="/j_spring_security_check" var="login"></c:url>
+	<form action="${login}" method="post">
 	<div class="container">
 		<div class="row">
         <div class="col-md-offset-5 col-md-3">
@@ -36,10 +37,13 @@ background-image:url("https://i.pinimg.com/originals/96/95/0a/96950a894a19d012e2
 			<br><br><br>
 				<h4 style="color:red; text-align:center">Welcome To Kidszone
 					</h4>
-          
-      Username:       <input type="text" name="name" class="form-control input-sm chat-input" placeholder="username" />
+           <c:if test="${error!=null}">
+           <div class="alert alert-danger">
+           <strong>check your username or password</strong></div></c:if>
+           
+      Username:       <input type="text" name="j_name" class="form-control input-sm chat-input" placeholder="username" />
             <br>
-      Password:      <input type="password" name="password" class="form-control input-sm chat-input" placeholder="password" />
+      Password:      <input type="password" name="j_password" class="form-control input-sm chat-input" placeholder="password" />
             <br>
             
             <div class="wrapper">

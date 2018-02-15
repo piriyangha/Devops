@@ -28,7 +28,7 @@
 </head>
 <body>
 	<springForm:form action="${contextRoot}/saveproduct" method="POST"
-		modelAttribute="pro" class="form-horizontal" id="form1">    <!--  enctype="multipart/form-data" -->
+		modelAttribute="pro" enctype="multipart/form-data" class="form-horizontal" id="form1">    <!--  enctype="multipart/form-data" -->
 
 
 		<div class="row">
@@ -105,15 +105,14 @@
               </div>
 				</div>
 			</div>
-	  
-			<%-- <div class="form-group">
+			<div class="form-group">
 				<springForm:label class="control-label col-sm-4"
 					style="text-align:right; color:maroon;" path="image"> Upload Image:</springForm:label>
 				<div class="control-label col-sm-4 col-sm-4">
 					<springForm:input type="file" path="image" class="form-control"
 						placeholder="upload image" />
 				</div>
-			</div> --%>
+			</div> 
 		 
 	</springForm:form>
 </body>
