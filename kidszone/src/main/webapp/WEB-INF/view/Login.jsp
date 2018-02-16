@@ -41,9 +41,9 @@ background-image:url("https://i.pinimg.com/originals/96/95/0a/96950a894a19d012e2
            <div class="alert alert-danger">
            <strong>check your username or password</strong></div></c:if>
            
-      Username:       <input type="text" name="j_name" class="form-control input-sm chat-input" placeholder="username" />
+      Username:       <input type="text" name="name" class="form-control input-sm chat-input" placeholder="username" />
             <br>
-      Password:      <input type="password" name="j_password" class="form-control input-sm chat-input" placeholder="password" />
+      Password:      <input type="password" name="password" class="form-control input-sm chat-input" placeholder="password" />
             <br>
             
             <div class="wrapper">

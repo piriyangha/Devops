@@ -81,7 +81,7 @@ public class ProductController {
 		return "updateproduct";
 	}
 	@RequestMapping(value = { "/all/product/updateproduct" })
-	public String updateSupplier(@ModelAttribute("product") Product product) {
+	public String updateSupplier(@ModelAttribute("products") Product product) {
      	productDao.updateProduct(product);
 		return "redirect:/productlist";
 	}

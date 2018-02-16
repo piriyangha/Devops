@@ -19,13 +19,13 @@
  <c:set var="contextRoot" value="${pageContext.request.contextPath }"></c:set> 
 
 <style>
-body{
+
 
 
    </style>
 </head>
 <body>
- 	<%-- <%@ include file="header.jsp" %>  --%>
+  <%@ include file="header.jsp" %> 
 	<div class="container">
 		<h1 style="text-align: center">Welcome to Registration Page</h1>
 		<br>
@@ -100,5 +100,6 @@ body{
 			</div>
 	</springForm:form>
 	</div>
+	<%@ include file="footer.jsp" %>
 </body>
 </html>

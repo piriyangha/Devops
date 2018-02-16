@@ -37,7 +37,7 @@ td{
 
 </head>
 <body>
- <%-- <%@ include file="header.jsp" %> --%>
+
 	<h2> Product List</h2>
 	<table  class="table table-responsive">
 		<tr>

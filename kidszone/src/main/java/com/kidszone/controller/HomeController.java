@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -20,9 +21,9 @@ public class HomeController {
 	CategoryDao categoryDao;
 @Autowired
 SupplierDao supplierDao;
-	@RequestMapping(value = { "/","/admin/home" })
-	public String homePage(ModelMap map) {
-		try {
+	@RequestMapping(value = { "/","/home" })
+	public String homePage(Model model) {
+		/*try {
 		map.addAttribute("category", categoryDao.getAllCategories());
 		map.addAttribute("supplier", supplierDao.getAllSuppliers());
 		}catch(Exception e) {
@@ -30,13 +31,15 @@ SupplierDao supplierDao;
 		}
 		map.addAttribute("supp",new Supplier());
 		map.addAttribute("pro",new Product());
-		map.addAttribute("cat",new Category());
+		map.addAttribute("cat",new Category());*/
+		model.addAttribute("supp",new Supplier());
+		model.addAttribute("pro",new Product());
+		model.addAttribute("cat",new Category());
+		model.addAttribute("category", categoryDao.getAllCategories());
+		model.addAttribute("supplier", supplierDao.getAllSuppliers());
+		
 		return "home";
 	}
 	
-	/*@RequestMapping(value= {"/login"})
-	public String loginPage()
-	{
-		return "Login";
-	}*/
+	
 }

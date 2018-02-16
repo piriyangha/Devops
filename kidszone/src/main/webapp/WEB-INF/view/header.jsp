@@ -4,6 +4,7 @@
 	uri="http://www.springframework.org/tags/form"%>
 <%@ page isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="security" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -50,23 +51,23 @@ body {
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="/home"><span
+				<li class="active"><a href="${contextRoot}/home"><span
 						class="glyphicon glyphicon-home aria-hidden=true"></span> Home</a></li>
-				<li><a href="#"><span
-						class="glyphicon glyphicon-home aria-hidden=true"></span> Admin</a></li>
+				
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">category <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<c:forEach items="${category}" var="cat">
+						
+					<c:forEach items="${category}" var="cat">
 							<li><a href="#">${cat.cname}</a></li>
-						</c:forEach>
+					</c:forEach>
 					</ul></li>
 				<li><a href="productlist"> ProductList <span class="glyphicon glyphicon-menu-hamburger"></span></a></li>
 					
 					
-				<%--  <c:if test="${pageContext.request.userPrincipal.name == 'priya' }"> --%>
+				 <c:if test="${pageContext.request.userPrincipal.name == 'priya' }">
 				 <li><a href="#" data-toggle="modal" data-target="#regis"><span class="caret"></span> Add</a></li>
-				<%--  </c:if> --%>
+				 </c:if> 
 					<div class="modal fade" id="regis" tabindex="-1" role="dialog"
 						aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-dialog cascading-modal" role="document">
@@ -149,9 +150,12 @@ body {
 			<li><a href="login?Login=true"><span class="glyphicon glyphicon-log-in"></span>
 					Login</a></li></ul></c:if>
 					
-			<c:url value="/j_spring_security_logout" var="logout"/>		
+			<c:url value="/j_spring_security_logout" var="logout"/>	
+			
+			 
 			<c:if test="${pageContext.request.userPrincipal.name !=null }">	
 			<ul class="nav navbar-nav navbar-right">
+			  <li> <p class="navbar-text"> Welcome:${pageContext.request.userPrincipal.name}</p></li>
 				<li><a href="${logout}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>	</ul>						
 	        </c:if>
 	       

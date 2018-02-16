@@ -7,16 +7,30 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kidszonebackend.Dao.CategoryDao;
+import com.kidszonebackend.Dao.SupplierDao;
 import com.kidszonebackend.Dao.UserDao;
+import com.kidszonebackend.Model.Category;
+import com.kidszonebackend.Model.Product;
+import com.kidszonebackend.Model.Supplier;
 import com.kidszonebackend.Model.User;
 
 @Controller
 public class UserController {
 @Autowired
 UserDao userDao;
+@Autowired
+CategoryDao categoryDao;
+@Autowired
+SupplierDao supplierDao;
 	@RequestMapping(value= {"/register"})
 	public String registerPage(Model model)
 	{
+		model.addAttribute("supp",new Supplier());
+		model.addAttribute("pro",new Product());
+		model.addAttribute("cat",new Category());
+		model.addAttribute("category", categoryDao.getAllCategories());
+		model.addAttribute("supplier", supplierDao.getAllSuppliers());
 		model.addAttribute("user",new User());
 		return "register";
 	}
