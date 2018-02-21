@@ -40,6 +40,24 @@ SupplierDao supplierDao;
 		
 		return "home";
 	}
+	@RequestMapping(value = {"/aboutus"})
+	public String aboutPage(Model model) {
+		model.addAttribute("supp",new Supplier());
+		model.addAttribute("pro",new Product());
+		model.addAttribute("cat",new Category());
+		model.addAttribute("category", categoryDao.getAllCategories());
+		model.addAttribute("supplier", supplierDao.getAllSuppliers());
+		return "aboutus";
+	}
 	
+	@RequestMapping(value = {"/contactus"})
+	public String contactUstPage(Model model) {
+		model.addAttribute("supp",new Supplier());
+		model.addAttribute("pro",new Product());
+		model.addAttribute("cat",new Category());
+		model.addAttribute("category", categoryDao.getAllCategories());
+		model.addAttribute("supplier", supplierDao.getAllSuppliers());
+		return "contactus";
+	}
 	
 }
