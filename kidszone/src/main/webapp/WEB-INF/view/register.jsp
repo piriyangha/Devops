@@ -99,7 +99,6 @@
 			</div>
 			</div>
 	</springForm:form>
-	</div>
-	<%@ include file="footer.jsp" %>
+	</div>	
 </body>
 </html>

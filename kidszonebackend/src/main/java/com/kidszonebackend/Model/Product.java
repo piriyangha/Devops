@@ -27,8 +27,15 @@ public class Product {
 	private Supplier supplier;
 	@Transient
 	private MultipartFile image;
+	/*private String imagename;
 	
 	
+	public String getImagename() {
+		return imagename;
+	}
+	public void setImagename(String imagename) {
+		this.imagename = imagename;
+	}*/
 	public Supplier getSupplier() {
 		return supplier;
 	}

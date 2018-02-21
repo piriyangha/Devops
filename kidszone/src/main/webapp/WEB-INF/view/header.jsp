@@ -147,7 +147,7 @@ body {
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="register"><span class="glyphicon glyphicon-user"></span>
 					Register</a></li>
-			<li><a href="login?Login=true"><span class="glyphicon glyphicon-log-in"></span>
+			<li><a href="${contextRoot}/login?Login=true"><span class="glyphicon glyphicon-log-in"></span>
 					Login</a></li></ul></c:if>
 					
 			<c:url value="/j_spring_security_logout" var="logout"/>	
@@ -156,7 +156,9 @@ body {
 			<c:if test="${pageContext.request.userPrincipal.name !=null }">	
 			<ul class="nav navbar-nav navbar-right">
 			  <li> <p class="navbar-text"> Welcome:${pageContext.request.userPrincipal.name}</p></li>
-				<li><a href="${logout}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>	</ul>						
+				<li><a href="${logout}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+				<li><a href="${contextRoot}/user/cart"><span class="glyphicon glyphicon-shopping-cart"></span> cart</a></li>	
+				</ul>						
 	        </c:if>
 	       
 		</div>

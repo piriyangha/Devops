@@ -25,7 +25,7 @@ body {
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
- <%-- <%@include file="header.jsp"%>  --%>
+ <%@include file="header.jsp"%> 
 	<div>
 		<div class="container">
 			<h3 style="text-align:center; color:orange;">Details about the Product</h3>
@@ -55,7 +55,22 @@ body {
 				</tr>
 
 			</table>
-						
+					 <c:if test="${product.stock==0}">
+                      Out Of Stock
+                      </c:if>
+
+			<c:if test="${product.stock!=0 }">
+				<c:url value="/user/addToCart/${product.pid}" var="url"></c:url> 
+				<form action="${url}">	
+					<div class="form-group">
+				<div class="col-sm-12">
+					<div class="text-center">
+						<input type="submit" class="btn btn-warning btn-lg" value="Add to cart" > 
+					</div>
+				</div>
+			</div>
+			</form>	
+			</c:if>	
 			</div>
 			</div>
 

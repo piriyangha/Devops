@@ -4,8 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 @Component
 @Entity
@@ -21,8 +21,15 @@ private String address;
 private String phone;
 private boolean enabled;
 private String role;
+@OneToOne
+private Cart cart;
 
-
+public Cart getCart() {
+	return cart;
+}
+public void setCart(Cart cart) {
+	this.cart = cart;
+}
 public String getPassword() {
 	return password;
 }

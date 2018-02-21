@@ -19,8 +19,10 @@ import org.springframework.web.multipart.MultipartFile;
 import com.kidszonebackend.Dao.CategoryDao;
 import com.kidszonebackend.Dao.ProductDao;
 import com.kidszonebackend.Dao.SupplierDao;
+import com.kidszonebackend.Model.Category;
 import com.kidszonebackend.Model.Product;
 import com.kidszonebackend.Model.Supplier;
+
 
 @Controller
 public class ProductController {
@@ -35,6 +37,7 @@ public class ProductController {
 	
 	@RequestMapping(value= {"/saveproduct"})
 	public String saveProduct(@ModelAttribute("pro") Product product) {
+		
 		productDao.insertProduct(product);
 		MultipartFile image=product.getImage();
 		String imagepath=request.getServletContext().getRealPath("/resource/images");
@@ -51,6 +54,7 @@ public class ProductController {
 			
 			e.printStackTrace();
 		}
+		
 		return "redirect:/productlist";
 		}
 	@RequestMapping(value= {"/productlist"})
@@ -69,6 +73,13 @@ public class ProductController {
 	public String viewProduct(@PathVariable int pid, Model model) {
 		Product product = productDao.getProductById(pid);
 		model.addAttribute("product", product);
+		
+		model.addAttribute("supp",new Supplier());     //adding header.jsp file in the product view form
+		model.addAttribute("pro",new Product());      //as i used modal in header bar i need to bind 
+		model.addAttribute("cat",new Category());     //allthose pro cat supp with all the controllers 
+		model.addAttribute("category", categoryDao.getAllCategories());// where i include header.jsp
+		model.addAttribute("supplier", supplierDao.getAllSuppliers());
+		
 		return "viewproduct";
 	}
 
@@ -85,4 +96,11 @@ public class ProductController {
      	productDao.updateProduct(product);
 		return "redirect:/productlist";
 	}
+	 /*@RequestMapping(value="/categorydropdown/{cid}")
+		public String viewCategory(@PathVariable int cid, Model model)
+		{
+			System.out.println("inside productGetByCategoryId");
+			model.addAttribute("productList",productDao.getProductByCatId(cid));
+			return "home";
+		}*/
 }
