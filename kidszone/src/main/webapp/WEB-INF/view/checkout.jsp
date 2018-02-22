@@ -45,8 +45,8 @@
 						</h3></th>
 				</tr>
 				<tr>
-					<th>House Locality</th>
-					<td><input name="locality" class="form-control"
+					<th>Street name</th>
+					<td><input name="Streetname" class="form-control"
 						required="required" /></td>
 				</tr>
 				<tr>
@@ -85,7 +85,7 @@
 					<td colspan="2">
 						<div class="row">
 							<div class="col-sm-offset-2 col-sm-3">
-								<a href="${e}user/cart"
+								<a href="${contextRoot}/user/cart"
 									class="btn btn-danger btn-block myBoldFont" id="goBack">Go
 									Back</a>
 							</div>

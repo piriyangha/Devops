@@ -86,7 +86,7 @@
 					<div class="control-label col-sm-8">
 					<springForm:textarea path="address" rows="5" cols="30" class="form-control"
 						placeholder="Enter your address"/>
-						<springForm:errors path="address" cssStyle="color:red">
+						<springForm:errors path="address" cssStyle="color:red" >
                     <p style="color:red">Enter your Address</p></springForm:errors>
 				</div>
 				</div>

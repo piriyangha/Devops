@@ -5,7 +5,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 @Component
 @Entity
@@ -13,11 +19,20 @@ public class User {
 @Id 
 @GeneratedValue(strategy = GenerationType.AUTO)
 private int id;
+@NotEmpty
 private String name;
+@NotEmpty
+/*@Size(min = 6, max = 15, message = "Your password must between 6 and 15 characters")	*/
 private String password;
+@NotEmpty
+@Email
 private String email;
+@NotEmpty
+/*@DateTimeFormat(pattern = "dd/MM/yyyy")*/
 private String dob;
+@NotEmpty
 private String address;
+@NotEmpty
 private String phone;
 private boolean enabled;
 private String role;

@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.kidszonebackend.Dao.CartItemDao;
 import com.kidszonebackend.Model.CartItem;
+import com.kidszonebackend.Model.ShippingAddress;
 
 @Repository("cartitemDao")
 @Transactional
@@ -32,6 +33,12 @@ SessionFactory sessionFactory;
 	public CartItem getCartItemByCartItemId(int cartitemid) {
 		
 		return (CartItem)sessionFactory.getCurrentSession().get(CartItem.class,cartitemid);
+	}
+
+	@Override
+	public void insertShippingAddress(ShippingAddress address) {
+		sessionFactory.getCurrentSession().saveOrUpdate(address);
+		
 	}
 
 }

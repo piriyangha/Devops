@@ -58,7 +58,7 @@
 			<tbody>
 				<c:forEach items="${cart.cartItems}" var="c">
 					
-					<c:url value="/resource/images/${product.pid}.jpg" var="imageUrl"></c:url>
+					<c:url value="/resource/images/${c.product.pid}.jpg" var="imageUrl"></c:url>
 					   <tr>
 						<td><img src="${imageUrl}" height="80" width="80"></td>
 						<td>${c.product.pname}</td>
@@ -75,7 +75,7 @@
 			<tr>
 			<%-- <c:url value="ProductList" var="url"></c:url> --%>
 			<td> <a href="${contextRoot}/productlist" class="btn btn-danger"><span class="col-lg-8"><i class="fa fa-angle-left"></i>Continue shopping</span></a></td>
-			<td> <a href="${contextRoot}/checkout_" class="btn btn-success"><span class="col-lg-8"><i class="fa fa-angle-right"></i>Check out</span></a></td>
+			<td> <a href="${contextRoot}/checkout" class="btn btn-success"><span class="col-lg-8"><i class="fa fa-angle-right"></i>Check out</span></a></td>
 			</tr>
 			</tfoot>
 		</table>

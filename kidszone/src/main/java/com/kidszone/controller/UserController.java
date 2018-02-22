@@ -1,8 +1,11 @@
 package com.kidszone.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -48,8 +51,13 @@ SupplierDao supplierDao;
 		return "Login";
 	}
 	@RequestMapping(value= {"/saveregister"})
-	public String saveRegister(@ModelAttribute("user") User user)
+	public String saveRegister(@Valid @ModelAttribute("user") User user,BindingResult result, Model model)
 	{   
+		if(result.hasErrors())
+		{
+			return "redirect:/register";
+		}
+		
 		user.setEnabled(true);
         user.setRole("ROLE_USER");
 		userDao.insertValues(user);

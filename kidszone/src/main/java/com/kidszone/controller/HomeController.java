@@ -23,15 +23,7 @@ public class HomeController {
 SupplierDao supplierDao;
 	@RequestMapping(value = { "/","/home" })
 	public String homePage(Model model) {
-		/*try {
-		map.addAttribute("category", categoryDao.getAllCategories());
-		map.addAttribute("supplier", supplierDao.getAllSuppliers());
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		map.addAttribute("supp",new Supplier());
-		map.addAttribute("pro",new Product());
-		map.addAttribute("cat",new Category());*/
+		
 		model.addAttribute("supp",new Supplier());
 		model.addAttribute("pro",new Product());
 		model.addAttribute("cat",new Category());

@@ -3,6 +3,7 @@ package com.kidszone.controller;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.transaction.Transactional;
 
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kidszonebackend.Dao.CartDao;
 import com.kidszonebackend.Dao.CartItemDao;
@@ -19,6 +22,7 @@ import com.kidszonebackend.Dao.UserDao;
 import com.kidszonebackend.Model.Cart;
 import com.kidszonebackend.Model.CartItem;
 import com.kidszonebackend.Model.Product;
+import com.kidszonebackend.Model.ShippingAddress;
 import com.kidszonebackend.Model.User;
 
 @Controller
@@ -116,9 +120,50 @@ public class CartController {
 		model.addAttribute("cart", cart);
         return "Cart";
 	}
-	@RequestMapping("/cart/removecartitem/{cartId}")
-	public String deleteCart(@PathVariable int cartId) {	
-		cartDao.deleteCart(cartId);
+	@RequestMapping("/cart/removecartitem/{cartitemid}")
+	public String deleteCartItem(@PathVariable int cartitemid) {	
+		cartitemdao.deleteCartItem(cartitemid);
 		return "redirect:/user/cart";
+	}
+	
+	@RequestMapping("/checkout")
+	public String checkoutPage() {
+		return "checkout";
+	}
+	@RequestMapping(value="/user/placeOrder")
+	public ModelAndView placeOrder(@RequestParam Map<String,String> data,Principal principal ) {
+		ModelAndView m = new ModelAndView("redirect:/user/thankYou");
+		ShippingAddress shippingAddress=new ShippingAddress();
+		shippingAddress.setStreetname(data.get("Streetname"));
+		shippingAddress.setCity(data.get("city"));
+		shippingAddress.setPincode(Integer.parseInt(data.get("pincode")));
+		shippingAddress.setState(data.get("state"));
+		cartitemdao.insertShippingAddress(shippingAddress);
+		CartItem cartitem=new CartItem();
+		cartitem.setShippingaddress(shippingAddress);
+		User user=new User();
+		user.setName(principal.getName());
+		cartitem.setPaymode(data.get("payMode"));
+		
+		/*orders.setOrderUserDetails(userDetails);
+		orders.setOrderId((long)(Math.random()*100000000));
+		List<Cart> list=cartDAO.getCartByUser(SecurityContextHolder.getContext().getAuthentication().getName());
+		for(Cart c:list){
+			orders.setId(0);
+			orders.setOrderProductId(c.getCartProductId());
+			orders.setOrderImage(c.getCartImage());
+			orders.setOrderPrice(c.getCartPrice()*c.getCartQuantity());
+			orders.setOrderQuantity(c.getCartQuantity());
+			orders.setOrderProductName(c.getCartProductName());
+			orders.setPayMode(data.get("payMode"));
+			ordersDAO.insertOrders(orders);
+			cartDAO.deleteCart(c.getCartId());
+			}*/
+		
+		return m;
+	}
+	@RequestMapping("/user/thankYou")
+	public String thankYou() {
+		return "thankyou";
 	}
 	}

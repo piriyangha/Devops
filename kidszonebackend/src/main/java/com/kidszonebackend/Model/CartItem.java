@@ -18,16 +18,30 @@ public class CartItem {
     private double subtotal;
     @OneToOne
     private Product product;
-    public Product getProduct() {
+    @OneToOne
+    private ShippingAddress shippingaddress;
+    private String paymode;
+    @ManyToOne
+    private Cart cart;
+    
+    public ShippingAddress getShippingaddress() {
+		return shippingaddress;
+	}
+	public void setShippingaddress(ShippingAddress shippingaddress) {
+		this.shippingaddress = shippingaddress;
+	}
+	public String getPaymode() {
+		return paymode;
+	}
+	public void setPaymode(String paymode) {
+		this.paymode = paymode;
+	}
+	public Product getProduct() {
 		return product;
 	}
 	public void setProduct(Product product) {
 		this.product = product;
 	}
-	@ManyToOne
-    private Cart cart;
-	
-	
 	public int getCartitemid() {
 		return cartitemid;
 	}
